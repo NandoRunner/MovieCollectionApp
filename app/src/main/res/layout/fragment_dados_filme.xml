@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fandradetecinfo.com.moviecollectionapp.Views.FragGenero">
+
+        <TextView
+            android:id="@+id/txtHeader1"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:clickable="true"
+            android:gravity="center|left"
+            android:paddingLeft="20dp"
+            android:text="Gênero"
+            android:textAppearance="?android:textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/txtHeader2"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/txtHeader1"
+            android:gravity="center"
+            android:text="Filmes"
+            android:textAppearance="?android:textAppearanceLarge" />
+
+        <ListView
+            android:id="@+id/lstDadosFilme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtHeader1" />
+
+
+</RelativeLayout>
