@@ -36,6 +36,7 @@ public class FragConfig extends Fragment{
             public void onClick(View v)
             {
                 prefs.salvar(edt.getText().toString());
+                //Sair do Fragment
                 //NavUtils.navigateUpFromSameTask(getActivity());
             }
         });
