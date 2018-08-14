@@ -22,16 +22,15 @@ public class FragAtor extends _BaseFrag{
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // TODO Auto-generated method stub
+        InitData();
 
         View vw = super.onCreateView(inflater, container, savedInstanceState);
-
-        InitData();
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 DadosFilme df = adapter.getItem(position);
-                Toast.makeText(getActivity(), df.getNome(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), df.getNome(), Toast.LENGTH_SHORT).show();
                 LoadTelaFilmePor(df.getNome());
                 return false;
             }
@@ -42,7 +41,7 @@ public class FragAtor extends _BaseFrag{
 
     private void LoadTelaFilmePor(String ator)
     {
-        Intent i = new Intent(getContext(), ActFilmePor.class);
+        Intent i = new Intent(getActivity(), ActFilmePor.class);
         i.putExtra("ato_nome", ator);
         startActivity(i);
 

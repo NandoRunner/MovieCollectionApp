@@ -1,12 +1,20 @@
 apply plugin: 'com.android.application'
 
+def Properties versionProps = new Properties()
+def versionPropsFile = file('version.properties')
+if(versionPropsFile.exists())
+    versionProps.load(new FileInputStream(versionPropsFile))
+def code = (versionProps['VERSION_CODE'] ?: "0").toInteger() + 1
+versionProps['VERSION_CODE'] = code.toString()
+versionProps.store(versionPropsFile.newWriter(), null)
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "fandradetecinfo.com.moviecollectionapp"
         minSdkVersion 23
         targetSdkVersion 26
-        versionCode 1
+        versionCode code
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

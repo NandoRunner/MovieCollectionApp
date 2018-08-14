@@ -59,7 +59,7 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
             String url = params[0];
             url += "?ordem=" + params[1];
 
-            if (params[4] != null)
+            if (params.length == 5)
             {
                 url += "&" + params[4];
             }

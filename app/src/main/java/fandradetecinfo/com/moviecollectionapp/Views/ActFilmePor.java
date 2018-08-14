@@ -31,20 +31,16 @@ public class ActFilmePor extends AppCompatActivity {
     protected Map<String, String> mDados = new Hashtable<>();;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.fragment_dados_filme);
 
-        InitData();
-
-        Intent iin= getIntent();
-        Bundle b = iin.getExtras();
-
-        if(b!=null)
-        {
+        Bundle b = getIntent().getExtras();
+        if(b!=null) {
             filtroValor =(String) b.get("ato_nome");
         }
+
+        InitData();
 
         TextView tv = (TextView) findViewById(R.id.txtHeader1);
         tv.setText(mDados.get("a_nome"));
@@ -87,13 +83,13 @@ public class ActFilmePor extends AppCompatActivity {
 
     private void InitData()
     {
-        mDados.put("a_nome", "Filmes para ver");
+        mDados.put("a_nome", filtroValor);
         mDados.put("z_nome", "IMDB");
         mDados.put("url", "/mc_filmes_por_ator.php");
         mDados.put("coluna_a_nome", "titulo");
-        mDados.put("coluna_a_ordem", "2");
+        mDados.put("coluna_a_ordem", "4");
         mDados.put("coluna_z_nome", "rating");
-        mDados.put("coluna_z_ordem", "4");
+        mDados.put("coluna_z_ordem", "6");
         mDados.put("filtro", "ato_nome");
 
     }

@@ -1,5 +1,7 @@
 package fandradetecinfo.com.moviecollectionapp.Views;
 
+import fandradetecinfo.com.moviecollectionapp.BuildConfig;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,6 +30,9 @@ public class FragConfig extends Fragment{
         Context ctx = getContext();
         prefs = new PrefsHandler(ctx);
 
+        TextView tv = (TextView) vw.findViewById(R.id.txtVersion);
+        tv.setText(String.valueOf("Version Code: " + BuildConfig.VERSION_CODE));
+
         edt = vw.findViewById(R.id.edtBaseURL);
         edt.setText(prefs.getBaseURL());
         Button btSalvar = vw.findViewById(R.id.btnSalvar);
@@ -40,6 +45,9 @@ public class FragConfig extends Fragment{
                 //NavUtils.navigateUpFromSameTask(getActivity());
             }
         });
+
+
+
         return  vw;
 
     }
