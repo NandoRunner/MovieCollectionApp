@@ -59,6 +59,11 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
             String url = params[0];
             url += "?ordem=" + params[1];
 
+            if (params[4] != null)
+            {
+                url += "&" + params[4];
+            }
+
             HttpGet httppost = new HttpGet(url);
             HttpClient httpclient = new DefaultHttpClient();
             HttpResponse response = httpclient.execute(httppost);
