@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Version Code" />
+        android:text="Version:" />
 
     <TextView
         android:id="@+id/txtBaseURL"

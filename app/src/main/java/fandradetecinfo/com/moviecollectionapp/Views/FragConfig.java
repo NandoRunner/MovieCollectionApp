@@ -31,7 +31,7 @@ public class FragConfig extends Fragment{
         prefs = new PrefsHandler(ctx);
 
         TextView tv = (TextView) vw.findViewById(R.id.txtVersion);
-        tv.setText(String.valueOf("Version Code: " + BuildConfig.VERSION_CODE));
+        tv.setText(String.valueOf("Version: " + BuildConfig.VERSION_NAME));
 
         edt = vw.findViewById(R.id.edtBaseURL);
         edt.setText(prefs.getBaseURL());
