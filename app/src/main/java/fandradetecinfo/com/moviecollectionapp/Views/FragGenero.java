@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fandradetecinfo.com.moviecollectionapp.MainActivity;
+import fandradetecinfo.com.moviecollectionapp.R;
 
 public class FragGenero extends _BaseFrag{
 
@@ -24,10 +25,10 @@ public class FragGenero extends _BaseFrag{
     {
         mDados.put("a_nome", "Gênero");
         mDados.put("z_nome", "Filmes");
-        mDados.put("url", "/mc_generos.php");
-        mDados.put("coluna_a_nome", "genero");
+        mDados.put("url", getString(R.string.url_genero));
+        mDados.put("coluna_a_nome", getString(R.string.base_view_col_a));
         mDados.put("coluna_a_ordem", "1");
-        mDados.put("coluna_z_nome", "filmes");
+        mDados.put("coluna_z_nome", getString(R.string.base_view_col_z));
         mDados.put("coluna_z_ordem", "2");
 
     }

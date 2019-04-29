@@ -85,8 +85,8 @@ public class ActFilmePor extends AppCompatActivity {
     {
         mDados.put("a_nome", filtroValor);
         mDados.put("z_nome", "IMDB");
-        mDados.put("url", "/mc_filmes_por_ator.php");
-        mDados.put("coluna_a_nome", "titulo");
+        mDados.put("url", getString(R.string.url_filmes_ator));
+        mDados.put("coluna_a_nome", getString(R.string.base_view_movie_col_a));
         mDados.put("coluna_a_ordem", "4");
         mDados.put("coluna_z_nome", "rating");
         mDados.put("coluna_z_ordem", "6");

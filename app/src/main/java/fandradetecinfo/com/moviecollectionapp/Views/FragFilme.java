@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fandradetecinfo.com.moviecollectionapp.MainActivity;
+import fandradetecinfo.com.moviecollectionapp.R;
 
 public class FragFilme extends _BaseFrag {
 
@@ -24,9 +25,9 @@ public class FragFilme extends _BaseFrag {
     {
         mDados.put("a_nome", "Filmes para ver");
         mDados.put("z_nome", "IMDB");
-        mDados.put("url", "/mc_filmes_ver.php");
-        mDados.put("coluna_a_nome", "titulo");
-        mDados.put("coluna_a_ordem", "2");
+        mDados.put("url", getString(R.string.url_filme));
+        mDados.put("coluna_a_nome", getString(R.string.base_view_movie_col_a));
+        mDados.put("coluna_a_ordem", "1");
         mDados.put("coluna_z_nome", "rating");
         mDados.put("coluna_z_ordem", "4");
 

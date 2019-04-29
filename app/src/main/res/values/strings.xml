@@ -4,4 +4,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="url_filme">/movies/v1/GetAvailable</string>
+    <string name="url_filme_visto">/movies/v1/GetWatched</string>
+    <string name="url_genero">/genres/v1/GetMovieCount</string>
+    <string name="url_diretor">/directors/v1/GetMovieCount</string>
+    <string name="url_ator">/actors/v1/GetMovieCount</string>
+    <string name="url_filmes_ator">/mc_filmes_por_ator.php</string>
+    <string name="base_view_col_a">nome</string>
+    <string name="base_view_col_z">filmes</string>
+    <string name="base_view_movie_col_a">titulo</string>
 </resources>
