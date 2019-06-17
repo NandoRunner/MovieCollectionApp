@@ -57,12 +57,14 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
 
         try {
             String url = params[0];
-            url += "/" + params[1];
 
             if (params.length == 5)
             {
-                url += "&" + params[4];
+                url += "/" + params[4].replace("+", "&nbsp;");
             }
+
+            if (params[1] != null)
+                url += "/" + params[1];
 
             HttpGet httppost = new HttpGet(url);
             HttpClient httpclient = new DefaultHttpClient();

@@ -1,5 +1,6 @@
 package fandradetecinfo.com.moviecollectionapp.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,7 +32,9 @@ public class _BaseFrag extends Fragment {
 
     protected String ordem;
 
-    protected Map<String, String> mDados = new Hashtable<>();;
+    protected String _tela;
+
+    protected Map<String, String> mDados = new Hashtable<>();
 
     @Nullable
     @Override
@@ -46,7 +49,7 @@ public class _BaseFrag extends Fragment {
         tv2.setText(mDados.get("z_nome"));
 
         if (list == null) {
-            UpdateList(vw);
+            UpdateList(vw, _tela);
         }
 
         tv.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +59,7 @@ public class _BaseFrag extends Fragment {
 
                 if (!ordem.equals(mDados.get("coluna_a_ordem"))) {
                     ordem = mDados.get("coluna_a_ordem");
-                    UpdateList(getView());
+                    UpdateList(getView(), _tela);
                 }
                 //Toast.makeText(getActivity(), arrayData[4], Toast.LENGTH_SHORT).show();
             }
@@ -69,7 +72,7 @@ public class _BaseFrag extends Fragment {
 
                 if (!ordem.equals(mDados.get("coluna_z_ordem"))) {
                     ordem = mDados.get("coluna_z_ordem");
-                    UpdateList(getView());
+                    UpdateList(getView(),_tela);
                 }
             }
         });
@@ -79,7 +82,7 @@ public class _BaseFrag extends Fragment {
 
     }
 
-    protected void UpdateList(View v)
+    protected void UpdateList(View v, String nomeTela)
     {
         String[] arrayData = new String[4];
 
@@ -92,10 +95,18 @@ public class _BaseFrag extends Fragment {
         arrayData[3] = mDados.get("coluna_z_nome");
 
         list = new ArrayList<DadosFilme>();
-        adapter = new DadosFilmeAdapter(getActivity(), R.layout.row_dados_filme, list);
+        adapter = new DadosFilmeAdapter(getActivity(), R.layout.row_dados_filme, list, nomeTela);
         new JSONAsynTask(getActivity(), list, adapter).execute(arrayData);
 
         lv=(ListView) v.findViewById(R.id.lstDadosFilme);
         lv.setAdapter(adapter);
+    }
+
+    protected void LoadTelaFilmePor(String item)
+    {
+        Intent i = new Intent(getActivity(), ActFilmePor.class);
+        i.putExtra("nome", item);
+        i.putExtra("tela", _tela);
+        startActivity(i);
     }
 }

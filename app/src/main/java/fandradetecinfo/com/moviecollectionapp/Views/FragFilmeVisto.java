@@ -24,6 +24,8 @@ public class FragFilmeVisto extends _BaseFrag {
 
     private void InitData()
     {
+        _tela = "movw";
+
         mDados.put("a_nome", "Filmes vistos");
         mDados.put("z_nome", "Período");
         mDados.put("url", getString(R.string.url_filme_visto));

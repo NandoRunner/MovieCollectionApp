@@ -1,12 +1,19 @@
 package fandradetecinfo.com.moviecollectionapp.Views;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import fandradetecinfo.com.moviecollectionapp.MainActivity;
+import fandradetecinfo.com.moviecollectionapp.Models.DadosFilme;
+import fandradetecinfo.com.moviecollectionapp.PrefsHandler;
 import fandradetecinfo.com.moviecollectionapp.R;
 
 public class FragDiretor extends _BaseFrag{
@@ -18,12 +25,25 @@ public class FragDiretor extends _BaseFrag{
 
         InitData();
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View vw = super.onCreateView(inflater, container, savedInstanceState);
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                DadosFilme df = adapter.getItem(position);
+                //Toast.makeText(getActivity(), df.getNome(), Toast.LENGTH_SHORT).show();
+                LoadTelaFilmePor(df.getNome());
+                return false;
+            }
+        });
+
+        return vw;
     }
 
-	
 	private void InitData()
     {
+        _tela = "dir";
+
         mDados.put("a_nome", "Diretor");
         mDados.put("z_nome", "Filmes");
         mDados.put("url", getString(R.string.url_diretor));
@@ -42,5 +62,4 @@ public class FragDiretor extends _BaseFrag{
         f.setArguments(args);
         return f;
     }
-
 }

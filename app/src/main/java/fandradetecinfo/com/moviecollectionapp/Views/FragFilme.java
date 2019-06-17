@@ -23,6 +23,8 @@ public class FragFilme extends _BaseFrag {
 
     private void InitData()
     {
+        _tela = "mov";
+
         mDados.put("a_nome", "Filmes para ver");
         mDados.put("z_nome", "IMDB");
         mDados.put("url", getString(R.string.url_filme));

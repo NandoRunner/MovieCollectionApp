@@ -7,6 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.Hashtable;
+import java.util.Map;
+
+import fandradetecinfo.com.moviecollectionapp.Models.Tela;
 import fandradetecinfo.com.moviecollectionapp.Views.FragAtor;
 import fandradetecinfo.com.moviecollectionapp.Views.FragConfig;
 import fandradetecinfo.com.moviecollectionapp.Views.FragDiretor;
@@ -17,6 +21,8 @@ import fandradetecinfo.com.moviecollectionapp.Views.FragGenero;
 public class MainActivity extends AppCompatActivity {
 
     public static String baseUrl;
+
+    public static Map<String, Tela> mTela = new Hashtable<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,28 @@ public class MainActivity extends AppCompatActivity {
         PrefsHandler prefs = new PrefsHandler(getBaseContext());
 
         baseUrl = prefs.getBaseURL();
+
+        initDadosTela();
     }
+
+    private void initDadosTela()
+    {
+        initTela("ato", R.color.colorAtoBG, "","/actors/v1/GetMovieByName");
+        initTela("dir", R.color.colorDirBG,"","/directors/v1/GetMovieByName");
+        initTela("gen", R.color.colorGenBG,"","/genres/v1/GetMovieByName");
+        initTela("mov", R.color.colorBGFilme,"","");
+        initTela("movw", R.color.colorBGFilme,"","");
+    }
+
+    private void initTela(String nome, int list_row_bg, String url_main, String url_second)
+    {
+        Tela t = new Tela();
+        t.setList_row_bg(list_row_bg);
+        t.setUrl_main(url_main);
+        t.setUrl_second(url_second);
+        mTela.put(nome, t);
+    }
+
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
 

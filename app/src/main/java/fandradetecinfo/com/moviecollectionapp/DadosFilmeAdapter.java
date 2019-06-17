@@ -23,13 +23,15 @@ public class DadosFilmeAdapter extends ArrayAdapter<DadosFilme> {
     LayoutInflater vi;
     int Resource;
     ViewHolder holder;
+    String _tela;
 
-    public DadosFilmeAdapter(Context context, int resource, ArrayList<DadosFilme> objects) {
+    public DadosFilmeAdapter(Context context, int resource, ArrayList<DadosFilme> objects, String nomeTela) {
         super(context, resource, objects);
         vi = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Resource = resource;
         list = objects;
+        _tela = nomeTela;
     }
 
     @Override
@@ -52,7 +54,15 @@ public class DadosFilmeAdapter extends ArrayAdapter<DadosFilme> {
         holder.txtFilmes.setTextColor(v.getResources().getColor(R.color.colorColZGFilme));
 
         if (position % 2 != 1) {
-            v.setBackgroundColor(v.getResources().getColor(R.color.colorBGFilme));
+
+            int i = MainActivity.mTela.get(_tela).getList_row_bg();
+            if (i != 0)
+            {
+                v.setBackgroundColor(v.getResources().getColor(MainActivity.mTela.get(_tela).getList_row_bg()));
+            }
+            else {
+                v.setBackgroundColor(v.getResources().getColor(R.color.colorBGFilme));
+            }
         } else {
             v.setBackgroundColor(Color.WHITE);
         }

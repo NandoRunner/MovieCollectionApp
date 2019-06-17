@@ -9,6 +9,9 @@
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#AAAAAA</color>
     <color name="colorBGFilme">#deeff5</color>
+    <color name="colorAtoBG">#cce5cc</color>
+    <color name="colorDirBG">#ffcccc</color>
+    <color name="colorGenBG">#ffffcc</color>
     <color name="colorColZGFilme">#19195d</color>
     <color name="colorWhite">#FFFFFF</color>
 

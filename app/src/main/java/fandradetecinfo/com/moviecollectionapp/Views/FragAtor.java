@@ -39,15 +39,10 @@ public class FragAtor extends _BaseFrag{
         return vw;
     }
 
-    private void LoadTelaFilmePor(String ator)
-    {
-        Intent i = new Intent(getActivity(), ActFilmePor.class);
-        i.putExtra("ato_nome", ator);
-        startActivity(i);
-
-    }
 	private void InitData()
     {
+        _tela = "ato";
+
         mDados.put("a_nome", "Ator");
         mDados.put("z_nome", "Filmes");
         mDados.put("url", getString(R.string.url_ator));

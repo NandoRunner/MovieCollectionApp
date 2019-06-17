@@ -28,6 +28,8 @@ public class ActFilmePor extends AppCompatActivity {
     protected String ordem;
     protected String filtroValor;
 
+    protected String _tela;
+
     protected Map<String, String> mDados = new Hashtable<>();;
 
     @Override
@@ -37,9 +39,10 @@ public class ActFilmePor extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if(b!=null) {
-            filtroValor =(String) b.get("ato_nome");
+            filtroValor =(String) b.get("nome");
         }
 
+        _tela = (String) b.get("tela");
         InitData();
 
         TextView tv = (TextView) findViewById(R.id.txtHeader1);
@@ -78,20 +81,19 @@ public class ActFilmePor extends AppCompatActivity {
         });
         lv=(ListView) findViewById(R.id.lstDadosFilme);
         lv.setAdapter(adapter);
-
     }
 
     private void InitData()
     {
         mDados.put("a_nome", filtroValor);
         mDados.put("z_nome", "IMDB");
-        mDados.put("url", getString(R.string.url_filmes_ator));
+        mDados.put("url", MainActivity.mTela.get(_tela).getUrl_second());
+        //mDados.put("url", getString(R.string.url_filmes_ator));
         mDados.put("coluna_a_nome", getString(R.string.base_view_movie_col_a));
-        mDados.put("coluna_a_ordem", "4");
+        mDados.put("coluna_a_ordem", "3");
         mDados.put("coluna_z_nome", "rating");
-        mDados.put("coluna_z_ordem", "6");
-        mDados.put("filtro", "ato_nome");
-
+        mDados.put("coluna_z_ordem", "5");
+        mDados.put("filtro", "nome");
     }
 
     protected void UpdateList()
@@ -105,10 +107,10 @@ public class ActFilmePor extends AppCompatActivity {
         arrayData[1] = ordem;
         arrayData[2] = mDados.get("coluna_a_nome");
         arrayData[3] = mDados.get("coluna_z_nome");
-        arrayData[4] = mDados.get("filtro") + "=" + filtroValor.replace(" ", "+");
+        arrayData[4] = filtroValor.replace(" ", "+");
 
         list = new ArrayList<DadosFilme>();
-        adapter = new DadosFilmeAdapter(this, R.layout.row_dados_filme, list);
+        adapter = new DadosFilmeAdapter(this, R.layout.row_dados_filme, list, _tela);
         new JSONAsynTask(this, list, adapter).execute(arrayData);
 
         lv=(ListView) findViewById(R.id.lstDadosFilme);
