@@ -48,7 +48,9 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
         dialog = new ProgressDialog(activity);
         dialog.setMessage("Carregando, aguarde...");
         dialog.setTitle("Conectando ao Bando de Dados");
-        dialog.show();
+        if (BuildConfig.BUILD_TYPE.equals("debug")){
+            dialog.show();
+        }
         dialog.setCancelable(false);
     }
 

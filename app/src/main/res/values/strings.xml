@@ -5,6 +5,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <string name="url_base">http://fandradetecinfo-001-site1.itempurl.com/movieapi</string>
     <string name="url_filme">/movies/v1/GetAvailable</string>
     <string name="url_filme_visto">/movies/v1/GetWatched</string>
     <string name="url_genero">/genres/v1/GetMovieCount</string>
@@ -16,4 +18,5 @@
     <string name="base_view_col_a">nome</string>
     <string name="base_view_col_z">filmes</string>
     <string name="base_view_movie_col_a">titulo</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

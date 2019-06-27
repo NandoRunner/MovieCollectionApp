@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         baseUrl = prefs.getBaseURL();
 
+        if (baseUrl.isEmpty() || baseUrl == null) {
+            baseUrl = getString(R.string.url_base);
+            prefs.salvar(baseUrl);
+        }
         initDadosTela();
     }
 
@@ -79,7 +83,14 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     return FragAtor.newInstance("Atores");
                 case 5:
-                    return FragConfig.newInstance("Config");
+                    if (BuildConfig.BUILD_TYPE.equals("debug")){
+                        return FragConfig.newInstance("Config");
+                    }
+                    else
+                    {
+                        return FragAtor.newInstance("Atores");
+                    }
+
                 default:
                     return FragConfig.newInstance("Filmes");
             }
@@ -87,7 +98,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 6;
+
+            if (BuildConfig.BUILD_TYPE.equals("debug")){
+                return 6;
+            }
+            else
+            {
+                return 5;
+            }
         }
     }
 
