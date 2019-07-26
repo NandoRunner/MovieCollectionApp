@@ -6,23 +6,25 @@
 
         <TextView
             android:id="@+id/txtHeader1"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:clickable="true"
             android:gravity="center|left"
             android:paddingLeft="20dp"
             android:text="Gênero"
+            android:hint="Clique para ordenar"
             android:textAppearance="?android:textAppearanceLarge" />
 
         <TextView
             android:id="@+id/txtHeader2"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/txtHeader1"
             android:gravity="center"
             android:text="Filmes"
+            android:hint="Clique para ordenar"
             android:textAppearance="?android:textAppearanceLarge" />
 
         <ListView

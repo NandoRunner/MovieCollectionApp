@@ -31,10 +31,15 @@ public class _BaseFrag extends Fragment {
     protected DadosFilmeAdapter adapter;
 
     protected String ordem;
+    protected boolean isAsc;
 
     protected String _tela;
 
     protected Map<String, String> mDados = new Hashtable<>();
+
+    protected TextView tv;
+
+    protected TextView tv2;
 
     @Nullable
     @Override
@@ -42,49 +47,68 @@ public class _BaseFrag extends Fragment {
 
         View vw=inflater.inflate(R.layout.fragment_dados_filme, container, false);
 
-        TextView tv = (TextView) vw.findViewById(R.id.txtHeader1);
+        tv = (TextView) vw.findViewById(R.id.txtHeader1);
         tv.setText(mDados.get("a_nome"));
 
-        TextView tv2 = (TextView) vw.findViewById(R.id.txtHeader2);
-        tv2.setText(mDados.get("z_nome"));
+        tv2 = (TextView) vw.findViewById(R.id.txtHeader2);
+        tv2.setText(mDados.get("z_nome")+ " " + Character.toString("\u2191".toCharArray()[0]));
+        ordem = mDados.get("coluna_z_ordem");
+        isAsc = false;
 
         if (list == null) {
             UpdateList(vw, _tela);
+            UpdateHeaders(vw, 2);
         }
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ordem==null) ordem = mDados.get("coluna_z_ordem");
-
                 if (!ordem.equals(mDados.get("coluna_a_ordem"))) {
-                    ordem = mDados.get("coluna_a_ordem");
-                    UpdateList(getView(), _tela);
+                    isAsc = true;
                 }
-                //Toast.makeText(getActivity(), arrayData[4], Toast.LENGTH_SHORT).show();
+                ordem = mDados.get("coluna_a_ordem");
+                UpdateList(getView(), _tela);
+                UpdateHeaders(v, 1);
             }
         });
 
         tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ordem==null) ordem = mDados.get("coluna_z_ordem");
-
                 if (!ordem.equals(mDados.get("coluna_z_ordem"))) {
-                    ordem = mDados.get("coluna_z_ordem");
-                    UpdateList(getView(),_tela);
+                    isAsc = false;
                 }
+                ordem = mDados.get("coluna_z_ordem");
+                UpdateList(getView(),_tela);
+                UpdateHeaders(v, 2);
             }
         });
+
         lv=(ListView) vw.findViewById(R.id.lstDadosFilme);
         lv.setAdapter(adapter);
         return  vw;
 
     }
 
+    private void UpdateHeaders(View v, int header)
+    {
+       String s1 = mDados.get("a_nome");
+       String s2 = mDados.get("z_nome");
+
+       if (header==1) {
+           s1 += " " + Character.toString((isAsc ? "\u2193" : "\u2191").toCharArray()[0]);
+       }
+       else {
+           s2 += " " + Character.toString((isAsc ? "\u2193" : "\u2191").toCharArray()[0]);
+       }
+       tv.setText(s1);
+       tv2.setText(s2);
+       isAsc = !isAsc;
+    }
+
     protected void UpdateList(View v, String nomeTela)
     {
-        String[] arrayData = new String[4];
+        String[] arrayData = new String[6];
 
         if (TextUtils.isEmpty(MainActivity.baseUrl))
             return;
@@ -93,6 +117,8 @@ public class _BaseFrag extends Fragment {
         arrayData[1] = ordem;
         arrayData[2] = mDados.get("coluna_a_nome");
         arrayData[3] = mDados.get("coluna_z_nome");
+        arrayData[4] = "";
+        arrayData[5] = String.valueOf(isAsc);
 
         list = new ArrayList<DadosFilme>();
         adapter = new DadosFilmeAdapter(getActivity(), R.layout.row_dados_filme, list, nomeTela);

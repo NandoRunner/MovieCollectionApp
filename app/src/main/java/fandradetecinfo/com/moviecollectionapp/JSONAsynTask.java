@@ -66,7 +66,7 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
             }
 
             if (params[1] != null)
-                url += "/" + params[1];
+                url += "/" + params[1] +"/" + params[5];
 
             HttpGet httppost = new HttpGet(url);
             HttpClient httpclient = new DefaultHttpClient();
