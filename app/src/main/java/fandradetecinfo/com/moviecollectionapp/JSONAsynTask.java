@@ -19,6 +19,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import fandradetecinfo.com.moviecollectionapp.Models.DadosFilme;
 
@@ -40,33 +42,38 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
         this.adapter = adapter;
     }
 
-
+    public JSONAsynTask(Activity activity) {
+        this.activity = activity;
+    }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         dialog = new ProgressDialog(activity);
-        dialog.setMessage("Carregando, aguarde...");
-        dialog.setTitle("Conectando ao Bando de Dados");
         if (BuildConfig.BUILD_TYPE.equals("debug")){
-            dialog.show();
+
+            dialog.setMessage("Carregando, aguarde...");
+            dialog.setTitle("Conectando ao Bando de Dados");
+                dialog.show();
+            dialog.setCancelable(false);
         }
-        dialog.setCancelable(false);
     }
 
     @Override
     protected Boolean doInBackground(String... params) {
 
         try {
-            String url = params[0];
+            // tela / campo / orderação
+            String state = params[6] + "-" + params[1] + "-" + params[5];
 
-            if (params.length == 5)
+            if (MainActivity.mDado.get(state) != null)
             {
-                url += "/" + params[4].replace("+", "&nbsp;");
+                if (this.list != null)
+                    this.buildList(MainActivity.mDado.get(state), params);
+                return true;
             }
 
-            if (params[1] != null)
-                url += "/" + params[1] +"/" + params[5];
+            String url = buildURL(params);
 
             HttpGet httppost = new HttpGet(url);
             HttpClient httpclient = new DefaultHttpClient();
@@ -78,20 +85,14 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
                 HttpEntity entity = response.getEntity();
                 String data = EntityUtils.toString(entity, HTTP.UTF_8);
 
-
                 JSONObject jsono = new JSONObject(data);
                 JSONArray jarray = jsono.getJSONArray("server_response");
 
-                for (int i = 0; i < jarray.length(); i++) {
-                    JSONObject object = jarray.getJSONObject(i);
+                MainActivity.mDado.put(state, jarray);
 
-                    DadosFilme df = new DadosFilme();
+                if (this.list != null)
+                    this.buildList(jarray, params);
 
-                    df.setNome(object.getString(params[2]));
-                    df.setFilmes(object.getString(params[3]));
-
-                    list.add(df);
-                }
                 return true;
             }
         } catch (ParseException e1) {
@@ -102,14 +103,45 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
             e.printStackTrace();
         }
         return false;
-
     }
 
+    private String buildURL(String... params)
+    {
+        String ret = params[0];
+
+        if (params.length == 8)
+        {
+            ret += "/" + params[4].replace("+", "&nbsp;");
+        }
+
+        if (params[1] != null)
+            ret += "/" + params[1] +"/" + params[5];
+
+        return ret;
+    }
+
+    private void buildList(JSONArray jarray, String... params) {
+        try {
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject object = jarray.getJSONObject(i);
+
+                DadosFilme df = new DadosFilme();
+
+                df.setNome(object.getString(params[2]));
+                df.setFilmes(object.getString(params[3]));
+
+                list.add(df);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
     protected void onPostExecute(Boolean result) {
 
         dialog.dismiss();
         try {
-            adapter.notifyDataSetChanged();
+            if (this.list != null)
+                adapter.notifyDataSetChanged();
         }
         catch (Exception ex)
         {

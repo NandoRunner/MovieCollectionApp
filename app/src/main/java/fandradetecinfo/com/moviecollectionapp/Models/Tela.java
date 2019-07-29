@@ -8,6 +8,16 @@ public class Tela {
     
     private String url_second;
 
+    private boolean loaded;
+
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
+    }
+
     public int getList_row_bg() {
         return list_row_bg;
     }

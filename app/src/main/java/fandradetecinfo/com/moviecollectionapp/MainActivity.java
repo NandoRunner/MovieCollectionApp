@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import org.json.JSONArray;
+
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     public static String baseUrl;
 
     public static Map<String, Tela> mTela = new Hashtable<>();
+
+    public static Map<String, JSONArray> mDado = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
             prefs.salvar(baseUrl);
         }
         initDadosTela();
+
+
     }
 
     private void initDadosTela()
@@ -58,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         t.setList_row_bg(list_row_bg);
         t.setUrl_main(url_main);
         t.setUrl_second(url_second);
+        t.setLoaded(false);
         mTela.put(nome, t);
     }
 

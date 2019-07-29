@@ -31,7 +31,7 @@ public class FragAtor extends _BaseFrag{
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 DadosFilme df = adapter.getItem(position);
                 //Toast.makeText(getActivity(), df.getNome(), Toast.LENGTH_SHORT).show();
-                LoadTelaFilmePor(df.getNome());
+                LoadTelaFilmePor(df.getNome(), df.getFilmes());
                 return false;
             }
         });

@@ -21,5 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/movie_book_512" />
+        app:srcCompat="@drawable/movie_book_512"
+        android:contentDescription="TODO" />
 </android.support.constraint.ConstraintLayout>
