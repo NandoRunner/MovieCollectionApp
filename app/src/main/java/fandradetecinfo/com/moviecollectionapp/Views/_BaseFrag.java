@@ -62,6 +62,7 @@ public class _BaseFrag extends Fragment {
         if (list == null) {
             UpdateList(vw);
             UpdateHeaders(2);
+            UpdateListAll();
         }
 
         tv.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,7 @@ public class _BaseFrag extends Fragment {
                 _ordem = mDados.get("coluna_a_ordem");
                 UpdateList(getView());
                 UpdateHeaders(1);
+                UpdateListAll();
             }
         });
 
@@ -85,6 +87,7 @@ public class _BaseFrag extends Fragment {
                 _ordem = mDados.get("coluna_z_ordem");
                 UpdateList(getView());
                 UpdateHeaders(2);
+                UpdateListAll();
             }
         });
 
@@ -93,8 +96,6 @@ public class _BaseFrag extends Fragment {
         return  vw;
 
     }
-
-
 
     private void UpdateHeaders(int header)
     {
@@ -127,8 +128,7 @@ public class _BaseFrag extends Fragment {
         return s;
     }
 
-    protected void UpdateList(View v)
-    {
+    protected void UpdateList(View v) {
         if (TextUtils.isEmpty(MainActivity.baseUrl))
             return;
 
@@ -137,6 +137,29 @@ public class _BaseFrag extends Fragment {
         list = new ArrayList<DadosFilme>();
         adapter = new DadosFilmeAdapter(getActivity(), R.layout.row_dados_filme, list, _tela);
         new JSONAsynTask(getActivity(), list, adapter).execute(arrayData);
+
+        lv = (ListView) v.findViewById(R.id.lstDadosFilme);
+        lv.setAdapter(adapter);
+
+        if (!mTela.get(_tela).isLoaded()) {
+            // Carregar todas as ordenações
+            String[] a2 = BuildArrayData(_ordem, !_isAsc);
+            new JSONAsynTask(getActivity()).execute(a2);
+
+            String[] a3 = BuildArrayData(mDados.get("coluna_a_ordem"), _isAsc);
+            new JSONAsynTask(getActivity()).execute(a3);
+
+            String[] a4 = BuildArrayData(mDados.get("coluna_a_ordem"), !_isAsc);
+            new JSONAsynTask(getActivity()).execute(a4);
+
+
+        }
+    }
+
+    protected void UpdateListAll()
+    {
+        if (TextUtils.isEmpty(MainActivity.baseUrl))
+            return;
 
         if (!mTela.get(_tela).isLoaded())
         {
@@ -153,8 +176,7 @@ public class _BaseFrag extends Fragment {
             mTela.get(_tela).setLoaded(true);
         }
 
-        lv=(ListView) v.findViewById(R.id.lstDadosFilme);
-        lv.setAdapter(adapter);
+        mTela.get(_tela).setLoaded(true);
     }
 
     protected void LoadTelaFilmePor(String item, String count)

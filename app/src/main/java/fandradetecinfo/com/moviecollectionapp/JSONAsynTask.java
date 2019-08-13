@@ -50,7 +50,7 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
     protected void onPreExecute() {
         super.onPreExecute();
         dialog = new ProgressDialog(activity);
-        if (BuildConfig.BUILD_TYPE.equals("debug")){
+        if ((BuildConfig.BUILD_TYPE.equals("debug")) && (adapter != null)){
 
             dialog.setMessage("Carregando, aguarde...");
             dialog.setTitle("Conectando ao Bando de Dados");
