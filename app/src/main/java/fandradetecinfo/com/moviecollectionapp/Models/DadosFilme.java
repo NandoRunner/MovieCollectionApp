@@ -7,6 +7,7 @@ package fandradetecinfo.com.moviecollectionapp.Models;
 public class DadosFilme  {
 
     private String nome;
+    private String ano;
     private String filmes;
 
 
@@ -19,12 +20,28 @@ public class DadosFilme  {
         this.filmes = filmes;
     }
 
+    public DadosFilme(String nome, String ano, String filmes) {
+        super();
+        this.nome = nome;
+        this.ano = ano;
+        this.filmes = filmes;
+    }
+
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
     public String getFilmes() {

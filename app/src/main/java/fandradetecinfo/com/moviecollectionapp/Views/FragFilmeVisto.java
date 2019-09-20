@@ -21,7 +21,7 @@ public class FragFilmeVisto extends _BaseFrag {
         InitData();
 
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        setFooterInvisible(v);
+        //setFooterInvisible(v);
         return v;
     }
 
@@ -30,6 +30,7 @@ public class FragFilmeVisto extends _BaseFrag {
         _tela = "movw";
 
         mDados.put("a_nome", "Filmes vistos");
+        mDados.put("m_nome", "Ano");
         mDados.put("z_nome", "Período");
         mDados.put("url", getString(R.string.url_filme_visto));
         mDados.put("coluna_a_nome", getString(R.string.base_view_movie_col_a));

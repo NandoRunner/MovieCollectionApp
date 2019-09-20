@@ -42,11 +42,16 @@ public class DadosFilmeAdapter extends ArrayAdapter<DadosFilme> {
             holder = new ViewHolder();
             v = vi.inflate(Resource, null);
             holder.txtNome = (TextView) v.findViewById(R.id.txtNome);
+            holder.txtAno = (TextView) v.findViewById(R.id.txtAno);
             holder.txtFilmes = (TextView) v.findViewById(R.id.txtFilmes);
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
         }
+
+        if (holder.txtAno != null)
+            holder.txtAno.setText(list.get(position).getAno());
+
         holder.txtNome.setText(list.get(position).getNome());
         holder.txtFilmes.setText(list.get(position).getFilmes());
 
@@ -74,6 +79,7 @@ public class DadosFilmeAdapter extends ArrayAdapter<DadosFilme> {
     static class ViewHolder {
 
         public TextView txtNome;
+        public TextView txtAno;
         public TextView txtFilmes;
     }
 }

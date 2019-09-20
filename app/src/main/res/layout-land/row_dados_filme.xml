@@ -13,12 +13,21 @@
         android:textAppearance="?android:textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/txtFilmes"
+        android:id="@+id/txtAno"
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/txtNome"
         android:gravity="center"
         android:text="Filmes"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtFilmes"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/txtAno"
+        android:gravity="center"
+        android:text="ano"
         android:textAppearance="?android:textAppearanceMedium" />
 
 </RelativeLayout>

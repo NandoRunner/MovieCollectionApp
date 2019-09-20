@@ -127,6 +127,8 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
 
                 DadosFilme df = new DadosFilme();
 
+                if (params[6].equals("mov") || params[6].equals("movw"))
+                    df.setAno(object.getString("ano"));
                 df.setNome(object.getString(params[2]));
                 df.setFilmes(object.getString(params[3]));
 

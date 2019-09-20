@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_dados"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtHeader1"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:gravity="center|start"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Gênero"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/txtHeader15"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/txtHeader1"
+        android:gravity="center"
+        android:hint=""
+        android:text="Ano"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+
+    <TextView
+        android:id="@+id/txtHeader2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/txtHeader15"
+        android:gravity="center"
+        android:hint="Clique para ordenar"
+        android:text="Filmes"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/lstDadosFilme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHeader1" />
+
+</RelativeLayout>

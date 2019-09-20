@@ -45,6 +45,7 @@ public class FragDiretor extends _BaseFrag{
         _tela = "dir";
 
         mDados.put("a_nome", "Diretor");
+        mDados.put("m_nome", "");
         mDados.put("z_nome", "Filmes");
         mDados.put("url", getString(R.string.url_diretor));
         mDados.put("coluna_a_nome", getString(R.string.base_view_col_a));

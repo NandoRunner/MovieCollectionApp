@@ -40,6 +40,7 @@ public class _BaseFrag extends Fragment {
     protected Map<String, String> mDados = new Hashtable<>();
 
     protected TextView tv;
+    protected TextView tv15;
     protected TextView tv2;
 
     @Nullable
@@ -51,8 +52,15 @@ public class _BaseFrag extends Fragment {
         tv = (TextView) vw.findViewById(R.id.txtHeader1);
         tv.setText(mDados.get("a_nome"));
 
+        tv15 = (TextView) vw.findViewById(R.id.txtHeader15);
+        if (tv15 != null)
+            tv15.setText(mDados.get("m_nome"));
+
         TextView footer = (TextView) vw.findViewById(R.id.txtFooter);
-        footer.setText(getString(R.string.pressione_ver_detalhes) + " " + mDados.get("a_nome"));
+        if (_tela.equals("mov") || _tela.equals("movw"))
+            footer.setText("Role a tela lateralmente para navegar no App");
+        else
+            footer.setText(getString(R.string.pressione_ver_detalhes) + " " + mDados.get("a_nome"));
 
         tv2 = (TextView) vw.findViewById(R.id.txtHeader2);
         tv2.setText(mDados.get("z_nome")+ " " + Character.toString("\u2191".toCharArray()[0]));

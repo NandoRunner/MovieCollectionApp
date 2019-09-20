@@ -44,6 +44,7 @@ public class FragAtor extends _BaseFrag{
         _tela = "ato";
 
         mDados.put("a_nome", "Ator");
+        mDados.put("m_nome", "");
         mDados.put("z_nome", "Filmes");
         mDados.put("url", getString(R.string.url_ator));
         mDados.put("coluna_a_nome", getString(R.string.base_view_col_a));
