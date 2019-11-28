@@ -3,7 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
     <color name="actionbar_bg_color">#0080ff</color>
     <color name="actionbar_fg_color">#ffffff</color>
     <color name="colorBlack">#000000</color>
@@ -14,6 +13,4 @@
     <color name="colorGenBG">#ffffcc</color>
     <color name="colorColZGFilme">#19195d</color>
     <color name="colorWhite">#FFFFFF</color>
-
-
 </resources>

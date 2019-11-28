@@ -1,11 +1,21 @@
 package fandradetecinfo.com.moviecollectionapp;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 
 import org.json.JSONArray;
 
@@ -29,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static Map<String, JSONArray> mDado = new HashMap<>();
 
+    private ViewPager pager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
         PrefsHandler prefs = new PrefsHandler(getBaseContext());
@@ -47,7 +59,40 @@ public class MainActivity extends AppCompatActivity {
         }
         initDadosTela();
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        SpannableString s = new SpannableString(item.getTitle().toString());
+//        s.setSpan(new ForegroundColorSpan(Color.BLUE), 0, s.length(), 0);
+//        item.setTitle(s);
+
+        switch (item.getItemId()) {
+            case R.id.menu_item_ver:
+                pager.setCurrentItem(0);
+                return true;
+            case R.id.menu_item_visto:
+                pager.setCurrentItem(1);
+                return true;
+            case R.id.menu_item_genero:
+                pager.setCurrentItem(2);
+                return true;
+            case R.id.menu_item_diretor:
+                pager.setCurrentItem(3);
+                return true;
+            case R.id.menu_item_ator:
+                pager.setCurrentItem(4);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     private void initDadosTela()
@@ -68,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
         t.setLoaded(false);
         mTela.put(nome, t);
     }
-
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
 

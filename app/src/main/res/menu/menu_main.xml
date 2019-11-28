@@ -1,10 +1,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="fandradetecinfo.com.moviecollectionapp.MainActivity">
+    tools:context="fandradetecinfo.com.moviecollectionapp.MainActivity"
+    android:id="@+id/menu_main"
+    >
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/menu_item_ver"
+        android:checkable="false"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Filmes para ver" />
+    <item
+        android:id="@+id/menu_item_visto"
+        android:orderInCategory="200"
+        android:title="Filmes vistos" />
+    <item
+        android:id="@+id/menu_item_genero"
+        android:orderInCategory="300"
+        android:title="Gênero" />
+    <item
+        android:id="@+id/menu_item_diretor"
+        android:orderInCategory="400"
+        android:title="Diretor" />
+    <item
+        android:id="@+id/menu_item_ator"
+        android:orderInCategory="500"
+        android:title="Ator" />
 </menu>
