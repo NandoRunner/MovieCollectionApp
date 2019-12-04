@@ -64,7 +64,7 @@ public class JSONAsynTask extends AsyncTask<String, Void, Boolean> {
 
         try {
             // tela / campo / orderação
-            String state = params[6] + "-" + params[1] + "-" + params[5];
+            String state = params[6] + "-" + params[1] + "-" + params[5] +(params[4].isEmpty() ? "" : "-" + params[4]);
 
             if (MainActivity.mDado.get(state) != null)
             {
