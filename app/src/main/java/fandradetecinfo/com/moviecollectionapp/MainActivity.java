@@ -54,7 +54,14 @@ public class MainActivity extends AppCompatActivity {
         baseUrl = prefs.getBaseURL();
 
         if (baseUrl.isEmpty() || baseUrl == null) {
-            baseUrl = getString(R.string.url_base);
+
+            if (getString(R.string.is_local).equals("true"))
+            {
+                baseUrl = getString(R.string.url_base_local);
+            }
+            else {
+                baseUrl = getString(R.string.url_base);
+            }
             prefs.salvar(baseUrl);
         }
         initDadosTela();
