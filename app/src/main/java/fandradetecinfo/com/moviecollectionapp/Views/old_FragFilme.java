@@ -1,11 +1,12 @@
 package fandradetecinfo.com.moviecollectionapp.Views;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
 
 import fandradetecinfo.com.moviecollectionapp.old_BackgroundTask;
 import fandradetecinfo.com.moviecollectionapp.R;

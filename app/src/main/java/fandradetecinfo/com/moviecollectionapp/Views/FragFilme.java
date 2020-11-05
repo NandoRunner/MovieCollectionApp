@@ -1,13 +1,12 @@
 package fandradetecinfo.com.moviecollectionapp.Views;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import fandradetecinfo.com.moviecollectionapp.MainActivity;
+import androidx.annotation.Nullable;
+
 import fandradetecinfo.com.moviecollectionapp.R;
 
 public class FragFilme extends _BaseFrag {

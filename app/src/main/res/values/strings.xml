@@ -5,9 +5,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="is_local">true</string>
-    <string name="url_base_local">http://localhost/movieapi</string>
-    <string name="url_base">http://fandradetecinfo-001-site1.itempurl.com/movieapi</string>
+    <string name="is_local">false</string>
+    <string name="url_base_local">http://localhost/movie-webapi</string>
+    <string name="url_base">http://movie-webapi.azurewebsites.net/</string>
     <string name="url_filme">/movies/v1/GetAvailable</string>
     <string name="url_filme_visto">/movies/v1/GetWatched</string>
     <string name="url_genero">/genres/v1/GetMovieCount</string>

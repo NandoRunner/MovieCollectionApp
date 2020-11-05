@@ -33,8 +33,9 @@
         <activity
             android:name=".Views.ActFilmePor"
             android:label="Filmes por ator"
-            android:parentActivityName=".Views.ActFilmePor"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
