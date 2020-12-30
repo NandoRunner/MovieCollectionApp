@@ -6,7 +6,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="is_local">false</string>
-    <string name="url_base_local">http://localhost/movie-webapi</string>
+    <string name="url_base_local">http://192.168.0.50/movie-webapi/</string>
     <string name="url_base">http://movie-webapi.azurewebsites.net/</string>
     <string name="url_filme">/movies/v1/GetAvailable</string>
     <string name="url_filme_visto">/movies/v1/GetWatched</string>

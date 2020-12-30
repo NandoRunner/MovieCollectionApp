@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,16 @@ public class FragConfig extends Fragment {
 
     PrefsHandler prefs;
     EditText edt;
+    boolean isLocal;
+    Switch swLocal;
+
+    public void onResume()
+    {
+        super.onResume();
+
+        swLocal.setChecked(isLocal);
+    }
+
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -29,6 +41,9 @@ public class FragConfig extends Fragment {
 
         Context ctx = getContext();
         prefs = new PrefsHandler(ctx);
+
+        TextView ta = (TextView) vw.findViewById(R.id.txtAuthor);
+        ta.setText(String.valueOf("Author: " + "NandoRunner (Fernando Andrade)"));
 
         TextView tv = (TextView) vw.findViewById(R.id.txtVersion);
         tv.setText(String.valueOf("Version: " + BuildConfig.VERSION_NAME));
@@ -38,7 +53,8 @@ public class FragConfig extends Fragment {
         edt = vw.findViewById(R.id.edtBaseURL);
         edt.setText(oriBaseURL);
         Button btSalvar = vw.findViewById(R.id.btnSalvar);
-        btSalvar.setOnClickListener(new View.OnClickListener() {
+
+       btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -56,29 +72,48 @@ public class FragConfig extends Fragment {
             }
         });
 
+        swLocal = vw.findViewById(R.id.switchLocal);
+
+        isLocal = swLocal.isChecked();
+
+        swLocal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    edt.setText(getString(R.string.url_base_local));
+                }
+                else {
+                    edt.setText(getString(R.string.url_base));
+                }
+
+                btSalvar.setEnabled(isLocal != compoundButton.isChecked());
+                isLocal = compoundButton.isChecked();
+             }
+        });
+
         btSalvar.setEnabled(false);
 
-        edt.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
-                //If the keyevent is a key-down event on the "enter" button
-                Button btSalvar = view.getRootView().findViewById(R.id.btnSalvar);
-                EditText et = view.getRootView().findViewById(R.id.edtBaseURL);
-                if (!et.getText().toString().equals(oriBaseURL)) {
-                    //...
-                    // Perform your action on key press here
-                    // ...
-                    btSalvar.setEnabled(true);
-
-                    return true;
-                }
-                else
-                {
-                    btSalvar.setEnabled(false);
-
-                }
-                return false;
-            }
-        });
+//        edt.setOnKeyListener(new View.OnKeyListener() {
+//            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+//                //If the keyevent is a key-down event on the "enter" button
+//                Button btSalvar = view.getRootView().findViewById(R.id.btnSalvar);
+//                EditText et = view.getRootView().findViewById(R.id.edtBaseURL);
+//                if (!et.getText().toString().equals(oriBaseURL)) {
+//                    //...
+//                    // Perform your action on key press here
+//                    // ...
+//                    btSalvar.setEnabled(true);
+//
+//                    return true;
+//                }
+//                else
+//                {
+//                    btSalvar.setEnabled(false);
+//
+//                }
+//                return false;
+//            }
+//        });
 
         return  vw;
 

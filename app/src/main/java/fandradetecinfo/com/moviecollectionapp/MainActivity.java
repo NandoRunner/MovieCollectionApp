@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
         PrefsHandler prefs = new PrefsHandler(getBaseContext());
 
-        baseUrl = prefs.getBaseURL();
-
-        if (baseUrl.isEmpty() || baseUrl == null) {
+//        baseUrl = prefs.getBaseURL();
+//
+//        if (baseUrl.isEmpty() || baseUrl == null) {
 
             if (getString(R.string.is_local).equals("true"))
             {
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 baseUrl = getString(R.string.url_base);
             }
             prefs.salvar(baseUrl);
-        }
+//        }
         initDadosTela();
 
     }
